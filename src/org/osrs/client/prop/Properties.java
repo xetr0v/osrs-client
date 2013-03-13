@@ -1,4 +1,4 @@
-package org.prop;
+package org.osrs.client.prop;
 
 import java.io.*;
 import java.util.HashMap;
@@ -75,6 +75,10 @@ public class Properties {
         if(!sections.containsKey(sectionName))
             throw new IllegalArgumentException("No section: " + sectionName);
         return sections.get(sectionName);
+    }
+
+    public void save() throws IOException {
+        save(filename);
     }
 
     /**

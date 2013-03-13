@@ -1,8 +1,7 @@
-package org.prop;
+package org.osrs.client.prop;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * oldrs

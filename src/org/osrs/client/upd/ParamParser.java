@@ -1,12 +1,11 @@
-package org.upd;
+package org.osrs.client.upd;
 
-import org.prop.Properties;
-import org.prop.Section;
+import org.osrs.client.prop.Properties;
+import org.osrs.client.prop.Section;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 /**

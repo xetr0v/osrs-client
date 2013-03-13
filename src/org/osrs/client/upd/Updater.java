@@ -1,4 +1,4 @@
-package org.upd;
+package org.osrs.client.upd;
 
 import org.apache.bcel.classfile.ClassParser;
 import org.apache.bcel.classfile.Field;
@@ -10,8 +10,8 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHttpRequest;
-import org.prop.Properties;
-import org.prop.Section;
+import org.osrs.client.prop.Properties;
+import org.osrs.client.prop.Section;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -20,6 +20,10 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Iterator;
@@ -139,7 +143,8 @@ public class Updater {
         ParamParser p = new ParamParser("oldrsclient.properties");
         p.parseAndSave();
 
-        new File("gamepack.jar.temp").renameTo(new File("gamepack.jar"));
+        FileSystem fs = FileSystems.getDefault();
+        Files.move(fs.getPath("gamepack.jar.temp"), fs.getPath("gamepack.jar"), StandardCopyOption.REPLACE_EXISTING);
 
         System.out.println("Done");
     }

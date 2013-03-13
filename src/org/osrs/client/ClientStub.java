@@ -1,4 +1,4 @@
-package org;
+package org.osrs.client;
 
 import java.applet.AppletContext;
 import java.net.URL;

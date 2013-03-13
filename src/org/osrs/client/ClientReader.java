@@ -1,15 +1,14 @@
-package org;
+package org.osrs.client;
 
+import org.osrs.client.prop.Section;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.*;
-import org.apache.http.params.*;
 import org.apache.http.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.prop.Section;
 
 import java.applet.Applet;
 import java.lang.reflect.Field;
@@ -100,7 +99,7 @@ public class ClientReader implements Runnable {
             String val = fieldSection.getProperty("chat_message_senders");
             String clazz = val.substring(0, val.indexOf('.'));
             String field = val.substring(val.indexOf('.') + 1);
-            if(clazz.equals("client"))
+            if(clazz.equals("org/osrs/client"))
                 fMessageSenders = getField(field);
             else
                 fMessageSenders = getField(loadClass(clazz), field);
@@ -109,7 +108,7 @@ public class ClientReader implements Runnable {
             val = fieldSection.getProperty("chat_message_types");
             clazz = val.substring(0, val.indexOf('.'));
             field = val.substring(val.indexOf('.') + 1);
-            if(clazz.equals("client"))
+            if(clazz.equals("org/osrs/client"))
                 fMessageTypes = getField(field);
             else
                 fMessageTypes = getField(loadClass(clazz), field);
@@ -118,7 +117,7 @@ public class ClientReader implements Runnable {
             val = fieldSection.getProperty("chat_messages");
             clazz = val.substring(0, val.indexOf('.'));
             field = val.substring(val.indexOf('.') + 1);
-            if(clazz.equals("client"))
+            if(clazz.equals("org/osrs/client"))
                 fMessages = getField(field);
             else
                 fMessages = getField(loadClass(clazz), field);
@@ -127,7 +126,7 @@ public class ClientReader implements Runnable {
             val = fieldSection.getProperty("area_x");
             clazz = val.substring(0, val.indexOf('.'));
             field = val.substring(val.indexOf('.') + 1);
-            if(clazz.equals("client"))
+            if(clazz.equals("org/osrs/client"))
                 fAreaX = getField(field);
             else
                 fAreaX = getField(loadClass(clazz), field);
@@ -136,7 +135,7 @@ public class ClientReader implements Runnable {
             val = fieldSection.getProperty("area_y");
             clazz = val.substring(0, val.indexOf('.'));
             field = val.substring(val.indexOf('.') + 1);
-            if(clazz.equals("client"))
+            if(clazz.equals("org/osrs/client"))
                 fAreaY = getField(field);
             else
                 fAreaY = getField(loadClass(clazz), field);
@@ -145,7 +144,7 @@ public class ClientReader implements Runnable {
             val = fieldSection.getProperty("players");
             clazz = val.substring(0, val.indexOf('.'));
             field = val.substring(val.indexOf('.') + 1);
-            if(clazz.equals("client"))
+            if(clazz.equals("org/osrs/client"))
                 fPlayers = getField(field);
             else
                 fPlayers = getField(loadClass(clazz), field);
@@ -154,7 +153,7 @@ public class ClientReader implements Runnable {
             val = fieldSection.getProperty("local_player");
             clazz = val.substring(0, val.indexOf('.'));
             field = val.substring(val.indexOf('.') + 1);
-            if(clazz.equals("client"))
+            if(clazz.equals("org/osrs/client"))
                 fLocalPlayer = getField(field);
             else
                 fLocalPlayer = getField(loadClass(clazz), field);

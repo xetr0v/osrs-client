@@ -1,13 +1,15 @@
-package org;
+package org.osrs.client;
 
-import org.prop.Properties;
-import org.prop.Section;
-import org.upd.Updater;
+import org.osrs.client.prop.DefaultProperties;
+import org.osrs.client.upd.Updater;
+import org.osrs.client.prop.Properties;
+import org.osrs.client.prop.Section;
 
 import javax.swing.*;
 import java.applet.Applet;
 import java.awt.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -25,7 +27,16 @@ public class Launcher {
 
     public static void main(String args[]) throws Exception {// no exceptio nhandling 4 u
         props = new Properties();
-        props.load("oldrsclient.properties");
+
+        try {
+            props.load("oldrsclient.properties");
+        } catch(FileNotFoundException ex) {
+            System.err.println("Properties file not found! Generating default settings");
+            props = DefaultProperties.get();
+            props.save("oldrsclient.properties");
+            Updater upd = new Updater();
+            upd.update();
+        }
 
         Section launcherSection = props.getSection("launcher");
 
@@ -40,6 +51,7 @@ public class Launcher {
                     throw new Exception("");
                 applet = launcher.loadGame(new ClientStub(props.getSection("applet").getEntries(), baseURL, baseURL));
             } catch(Exception ex) {
+                ex.printStackTrace();
                 if(classLoader != null)
                     classLoader.close();
                 System.err.println("Unable to load applet!");

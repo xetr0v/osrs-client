@@ -1,4 +1,4 @@
-package org;
+package org.osrs.client;
 
 /**
  * oldrsclient
